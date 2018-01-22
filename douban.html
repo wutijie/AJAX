@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="font_mwwkim6t18knjyvi/iconfont.css"/>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			
+			a{
+				text-decoration: none;
+			}
+			li{
+				list-style: none;
+			}
+			input{
+				vertical-align: middle;
+			}
+			
+			#top{
+				width: 100%;
+				height: 26px;
+				background: dimgray;
+			}
+			#top ul:nth-of-type(1){
+				float: left;
+			}
+			#top ul:nth-of-type(2){
+				float: right;
+			}
+			#top ul li{
+				float: left;
+			}
+			#top ul li a{
+				color: lightgrey;
+				font: 12px/26px "微软雅黑";
+			}
+			#top ul li a:hover{
+				color: #fff;
+			}
+			#top ul:nth-of-type(1) li a{
+				margin: 0 25px 0 0;
+			}
+			#top ul:nth-of-type(1) li:nth-of-type(1){
+				margin-left: 10px;
+			}
+			#top ul:nth-of-type(2) li a{
+				margin-right: 25px;
+			}
+			#top ul:nth-of-type(2) li:nth-of-type(3){
+				margin-right: 10px;
+			}
+			#nav{
+				width: 100%;
+				background: aliceblue;
+			}
+			#navlef{
+				height: 74px;
+				line-height: 74px;
+				border: 1px solid transparent;
+			}
+			#navlef a{
+				color: #258DCD;
+				font-size: 30px;
+				font-weight: 600;
+				vertical-align: middle;
+			}
+			#navlef input{
+				margin-left: 200px;
+				width: 460px;
+				height: 30px;
+				background: #fff;
+				border: transparent;
+				padding-left: 10px;
+				border-radius: 5px;
+				box-shadow: 0 1px 1px #ccc;
+				outline: none;
+			}
+			#navlef i{
+				color: #fff;
+				display: inline-block;
+				height: 29px;
+				width: 29px;
+				line-height: 29px;
+				font-size: 18px;
+				background: #929BA2;
+				vertical-align: middle;
+				border-radius: 5px;
+				border-left: none;
+				text-align: center;
+			}
+			#xian{
+				height: 1px;
+				width: 100%;
+				background: powderblue;
+				opacity: 0.5;
+			}
+			#navfooter{
+				height: 40px;
+				line-height: 40px;
+				position: relative;
+			}
+			#navfooter a{
+				color: #27a;
+				font-size: 16px;
+				margin-right: 40px;
+			}
+			#navfooter a:hover{
+				color: #f00;
+			}
+			#navfooter img{
+				position: absolute;
+				width: 186px;
+				height: 96px;
+				right: 0;
+				top: -67px;
+			}
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			h1{
+				color: #27a;
+				padding: 50px 0;
+			}
+			.hh2{
+				color: #111;
+			    padding-bottom: 30px;
+			    margin-bottom: 18px;
+			    font-size: 16px;
+			    padding-top: 50px;
+			    clear: both;
+			}
+			.center{
+				width: 1200px;
+				margin: 0 auto;
+			}
+			.dv{
+				width: 270px;
+				padding-bottom: 30px;
+				display: inline-block;
+				text-align: center;
+				position: relative;
+			}
+			.rigdiv{
+				width: 230px;
+				height: 220px;
+				padding: 80px 20px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,0.7);
+				text-align: left;
+				display: none;
+				cursor: pointer;
+			}
+			.rigdiv p{
+				line-height: 30px;
+				font-size: 14px;
+			}
+			.imgs{
+				width: 270px;
+				height: 380px;
+				margin-bottom: 20px;
+				cursor: pointer;
+			}
+			.pp2s{
+				font-size: 12px;
+				padding: 5px 0;
+				color: red;
+			}
+			.pp3s{
+				color: deepskyblue;
+				font-size: 12px;
+				cursor: pointer;
+			}
+			.rigspa01{
+				color: #fff;
+				margin-right: 20px;
+			}
+			.rigspa02{
+				color: #ddd;
+			}
+			.rigsp03{
+				color: #fff;
+				margin-top: 50px;
+			}
+			.rigsp04{
+				color: #fff;
+			}
+			.rigsp05{
+				color: gold;
+			}
+		</style>
+		<script src="js/ajax.js"></script>
+		<script>
+			function fun(data){
+				console.log(data);
+				for(var i=0;i<data.subjects.length;i++){
+					
+					
+					if(i==0){
+						
+						var tidiv=document.createElement('div');
+						var toptit=data.title;
+						tidiv.setAttribute('class','hh2 center');
+						tidiv.innerHTML=toptit;
+						
+						
+						var bigdv=document.createElement('div');
+						bigdv.className='center';
+						bigdv.id='bigdv';
+						
+						
+					}
+					
+					
+					var dv=document.createElement('div');
+					dv.className='dv';
+					if((i+1)%4!=0){
+						dv.style.marginRight="30px";
+					}
+					
+					
+					
+					//图片
+					var med=data.subjects[i].images.medium;
+					var imgs=document.createElement('img');
+					imgs.src=med;
+					imgs.className='imgs';
+					
+					
+					//电影名
+					var tit=data.subjects[i].title;
+					var ps=document.createElement('p');
+					ps.innerHTML=tit;
+					ps.style.cursor='pointer';
+					
+					//上映时间
+					var years=data.subjects[i].year;
+					var pp2s=document.createElement('p');
+					pp2s.innerHTML=years;
+					pp2s.className='pp2s';
+					
+					//电影类型
+					var leix=data.subjects[i].genres;
+					var pp3s=document.createElement('p');
+					pp3s.innerHTML=leix;
+					pp3s.className='pp3s';
+					
+					
+					var rigdiv=document.createElement('div');
+					rigdiv.className='rigdiv';
+					//电影名
+					var rigspa01=document.createElement('span');
+					rigspa01.innerHTML=tit;
+					rigspa01.className='rigspa01';
+					rigdiv.appendChild(rigspa01);
+					
+					
+					//时间
+					var rigspa02=document.createElement('span');
+					rigspa02.innerHTML=years;
+					rigspa02.className='rigspa02';
+					rigdiv.appendChild(rigspa02);
+					
+					//导演
+					if(i!=data.subjects.length-2){
+						var rigsp03=document.createElement('p');
+						var daoyan=data.subjects[i].directors[0].name;
+						rigsp03.innerHTML='导演 : '+daoyan;
+						rigsp03.className='rigsp03';
+						rigdiv.appendChild(rigsp03);
+					}
+					
+					
+					//主演
+					var rigsp04=document.createElement('p');
+					var zhuyan="";
+					for(var j=0;j<data.subjects[i].casts.length;j++){
+						if(j<data.subjects[i].casts.length-1){
+							zhuyan+=data.subjects[i].casts[j].name+" / ";
+						}else{
+							zhuyan+=data.subjects[i].casts[j].name;
+						}
+					}
+					rigsp04.innerHTML='主演 : '+zhuyan;
+					rigsp04.className='rigsp04';
+					rigdiv.appendChild(rigsp04);
+					
+					
+					//评分
+					var rigsp05=document.createElement('p');
+					var pingfen=data.subjects[i].rating.average;
+					rigsp05.innerHTML='评分 : '+pingfen;
+					rigsp05.className='rigsp05';
+					rigdiv.appendChild(rigsp05);
+					
+					
+					
+					
+					
+					document.body.appendChild(tidiv);
+					document.body.appendChild(bigdv);
+					bigdv.appendChild(dv);
+					
+					dv.appendChild(imgs);
+					dv.appendChild(ps);
+					dv.appendChild(pp2s);
+					dv.appendChild(pp3s);
+					
+					dv.appendChild(rigdiv);
+				}
+				
+				
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		
+		
+		<div id="top" class="clesrfix">
+			<ul>
+				<li><a href="#">豆瓣</a></li>
+				<li><a href="#">读书</a></li>
+				<li><a href="#">电影</a></li>
+				<li><a href="#">音乐</a></li>
+				<li><a href="#">同城</a></li>
+				<li><a href="#">小组</a></li>
+				<li><a href="#">阅读</a></li>
+				<li><a href="#">FM</a></li>
+				<li><a href="#">时间</a></li>
+				<li><a href="#">市集</a></li>
+				<li><a href="#">更多</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">下载豆瓣客户端</a></li>
+				<li><a href="#">登录</a></li>
+				<li><a href="#">注册</a></li>
+			</ul>
+		</div>
+		<div id="nav">
+			<div id="navlef" class="center">
+				<a href="#">豆瓣电影</a>
+				<input type="text"  size="22" maxlength="60" placeholder="&emsp;搜索电影、电视剧、综艺、影人"/><i class="icon iconfont icon-sousuo"></i>
+			</div>
+			<div id="xian"></div>
+			<div id="navfooter" class="center">
+				<a href="#">影讯&购票</a>
+				<a href="#">选电影</a>
+				<a href="#">电视剧</a>
+				<a href="#">排行榜</a>
+				<a href="#">影评</a>
+				<a href="#">2017年榜单</a>
+				<a href="#">2017观影报告</a>
+				<img src="img/logo.png"/>
+			</div>
+		</div>
+
+		<!--<h1 class="center">豆瓣电影</h1>-->
+		<script src="https://api.douban.com/v2/movie/in_theaters?callback=fun"></script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script>
+			var bigdv=document.getElementById("bigdv");
+			var imimgs=bigdv.getElementsByTagName("img");
+			var ririgdv=document.getElementsByClassName("rigdiv");
+			for(var i=0;i<imimgs.length;i++){
+				imimgs[i].index=i;
+				imimgs[i].onmouseenter=function(){
+					ririgdv[this.index].style.display="block";
+				}
+				ririgdv[i].onmouseleave=function(){
+					this.style.display="none";
+				}
+			}
+		</script>
+	</body>
+</html>
